@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Angkringan Maharani</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'>
+    
+    <style>
+        .navbar .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .navbar .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 140px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        
+        .navbar .dropdown-content a {
+            color: var(--main-color);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 1.5rem;
+        }
+        
+        .navbar .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .navbar .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .navbar .dropbtn {
+            cursor: pointer;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .navbar .dropdown-content {
+                position: static;
+                display: none;
+                background-color: transparent;
+                box-shadow: none;
+            }
+        
+            .navbar .dropdown:hover .dropdown-content {
+                display: block;
+            }
+        
+            .navbar .dropdown-content a {
+                padding: 12px 16px 12px 30px;
+            }
+            .book {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            .heading {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            .box {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+            .btn {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #25d366;
+                color: white;
+                text-decoration: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            textarea.box {
+                resize: vertical;
+            }
+        }
+        :root {
+            --main-color: #4a4a4a;
+            --secondary-color: #6a6a6a;
+            --text-color: #333;
+            --background-color: #f4f4f4;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: #f8f8f8;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            text-decoration: none;
+            color: var(--main-color);
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .navbar {
+            display: flex;
+            gap: 25px;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: var(--main-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--main-color);
+            transition: width 0.3s ease;
+        }
+        .navbar a:hover::after {
+            width: 100%;
+        }
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--main-color);
+            transition: transform 0.2s ease;
+        }
+        .cart-icon:hover {
+            transform: scale(1.1);
+        }
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+        .cart-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 5%;
+            width: 320px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: none;
+            max-height: 500px;
+            overflow-y: auto;
+            padding: 15px;
+        }
+        .cart-dropdown.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #f1f1f1;
+            transition: background-color 0.2s ease;
+        }
+        .cart-item:hover {
+            background-color: #f9f9f9;
+        }
+        .cart-total {
+            padding: 15px;
+            text-align: right;
+            font-weight: bold;
+            background-color: #f8f8f8;
+            border-radius: 0 0 10px 10px;
+        }
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--main-color);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .checkout-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        .menu {
+            padding: 40px 5%;
+        }
+        .heading {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            color: var(--main-color);
+        }
+        .heading span {
+            display: block;
+            font-size: 1.2rem;
+            color: var(--text-color);
+        }
+        .box-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        .box {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .box img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .box:hover img {
+            transform: scale(1.1);
+        }
+        .box .content {
+            padding: 20px;
+        }
+        .box .content h3 {
+            margin-bottom: 10px;
+            color: var(--main-color);
+        }
+        .btn-keranjang {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--main-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-keranjang:hover {
+            background-color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">Angkringan Maharani <i class="fas fa-mug-hot"></i></a>
+        
+        <nav class="navbar">
+            <a href="index.html">HOME</a>
+            <a href="menu2.html">MENU</a>
+            <div class="dropdown">
+                <a href="#menu" class="dropdown">KONTAK</a>
+                <div class="dropdown-content">
+                    <a href="https://wa.me/6285220694419">WhatsApp</a>
+                    <a href="mailto:kgn6661@gmail.com">Gmail</a>
+            
+        </nav>
+        
+        <div class="cart-icon" onclick="toggleCart()">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cart-count">0</span>
+        </div>
+        
+        <div class="cart-dropdown" id="cart-dropdown">
+            <div id="cart-items"></div>
+            <div class="cart-total" id="cart-total">Total: Rp 0</div>
+            <a href="#" class="checkout-btn" onclick="checkout()">Checkout</a>
+        </div>
+    </header>
+    <section class="menu" id="menu">
+        <h1 class="heading">Our Menu <span>Food Menu</span></h1>
+
+        <div class="box-container">
+            <div class="box">
+                <img src="ayamgeprek.png" alt="Ayam Geprek">
+                <div class="content">
+                    <h3>Ayam Geprek</h3>
+                    <p>Ayam geprek perpaduan cita rasa yang pedas dengan bumbu rahasia yang special bisa membuat lidah anda ketagihan.</p>
+                    <span>Rp 10.000</span>
+                    <button class="btn-keranjang" onclick="addToCart('Ayam Geprek', 10000)">Keranjang</button>
+                </div>
+            </div>
+            <div class="box">
+                <img src="ayambakar.jpg" alt="Ayam Bakar">
+                <div class="content">
+                    <h3>Ayam Bakar</h3>
+                    <p>Ayam Bakar perpaduan cita rasa yang pedas dengan bumbu rahasia yang special bisa membuat lidah anda ketagihan.</p>
+                    <span>Rp 10.000</span>
+                    <button class="btn-keranjang" onclick="addToCart('Ayam Bakar', 10000)">Keranjang</button>
+                </div>
+            </div>
+            <div class="box">
+                <img src="ayamgoreng.png" alt="Ayam Goreng">
+                <div class="content">
+                    <h3>Ayam Goreng</h3>
+                    <p>Ayam Goreng perpaduan cita rasa yang pedas dengan bumbu rahasia yang special bisa membuat lidah anda ketagihan.</p>
+                    <span>Rp 10.000</span>
+                    <button class="btn-keranjang" onclick="addToCart('Ayam Goreng', 10000)">Keranjang</button>
+                </div>
+            </div>
+            <div class="box">
+                <img src="tempepenyet.jpg" alt="Tempe Penyet">
+                <div class="content">
+                    <h3>Tempe Penyet</h3>
+                    <p>Tempe penyet perpaduan cita rasa yang pedas dengan bumbu rahasia yang special bisa membuat lidah anda ketagihan.</p>
+                    <span>Rp 8.000</span>
+                    <button class="btn-keranjang" onclick="addToCart('Tempe Penyet', 8000)">Keranjang</button>
+                </div>
+            </div>
+            <div class="box">
+                <img src="telurgeprek.jpg" alt="Telur Geprek">
+                <div class="content">
+                    <h3>Telur Geprek</h3>
+                    <p>Telur geprek perpaduan cita rasa yang pedas dengan bumbu rahasia yang special bisa membuat lidah anda ketagihan.</p>
+                    <span>Rp 8.000</span>
+                    <button class="btn-keranjang" onclick="addToCart('Telur Geprek', 8000)">Keranjang</button>
+                </div>
+            </div>
+            <div class="box">
+                <img src="sayap.png" alt="Sayap Ayam">
+                <div class="content">
+                    <h3>Sayap Ayam</h3>
+                    <p>Sayap Ayam perpaduan cita rasa yang pedas dengan bumbu rahasia yang special bisa membuat lidah anda ketagihan.</p>
+                    <span>Rp 8.000</span>
+                    <button class="btn-keranjang" onclick="addToCart('Sayap Ayam', 8000)">Keranjang</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="menu" id="menu">
+        <!-- Previous sections remain unchanged -->
+    
+        <h1 class="heading">Our Menu <span>Snack Menu</span></h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="miesetan.jpg" alt="Mie Setan">
+                <div class="content">
+                    <h3>Mie Setan</h3>
+                    <p>Ayam Bakar dengan cita rasa yang khas bisa membuat perut anda kenyang wkwk.</p>
+                    <span>Rp 8.000</span>
+                    <button class="btn-keranjang" onclick="addToCart('Mie Setan', 8000)">Keranjang</button>
+                </div>
+            </div>
+            <div class="box">
+                <img src="piscok.jpg" alt="Pisang Coklat">
+                <div class="content">
+                    <h3>Pisang Coklat</h3>
+                    <p>Ayam geprek perpaduan cita rasa yang pedas dengan bumbu rahasia yang special bisa membuat lidah anda ketagihan.</p>
+                    <span>Rp 8.000</span>
+                    <button class="btn-keranjang" onclick="addToCart('Pisang Coklat', 8000)">Keranjang</button>
+                </div>
+            </div>
+            <div class="box">
+                <img src="kentaggoreng.jpg" alt="Kentang Goreng">
+                <div class="content">
+                    <h3>Kentang Goreng</h3>
+                    <p>Cocok dimakan bersama teman ataupun Keluarga untuk menemani waktu santaimu.</p>
+                    <span>Rp 8.000</span>
+                    <button class="btn-keranjang" onclick="addToCart('Kentang Goreng', 8000)">Keranjang</button>
+                </div>
+            </div>
+            <div class="box">
+                <img src="sosisgoreng.jpg" alt="Sosis Goreng">
+                <div class="content">
+                    <h3>Sosis Goreng</h3>
+                    <p>Menu yang enak dan harga terjangkau sosis goreng khas angkringan maharani dengan cita rasa yang berbeda.</p>
+                    <span>Rp 5.000</span>
+                    <button class="btn-keranjang" onclick="addToCart('Sosis Goreng', 5000)">Keranjang</button>
+                </div>
+            </div>
+            <div class="box">
+                <img src="tempepenyet.jpg" alt="Lalapan Tempe Penyet">
+                <div class="content">
+                    <h3>Lalapan Tempe Penyet</h3>
+                    <p>Minuman Rasa unggulan dari taro dan susu asli memberikan sensasi manis yang menggoda.</p>
+                    <span>Rp 10.000</span>
+                    <button class="btn-keranjang" onclick="addToCart('Lalapan Tempe Penyet', 10000)">Keranjang</button>
+                </div>
+            </div>
+            <div class="box">
+                <img src="telurgeprek.jpg" alt="Lalapan Telur Geprek">
+                <div class="content">
+                    <h3>Lalapan Telur Geprek</h3>
+                    <p>Segar nya engga ada lawan, dengan sensai kesegaran lemon dan soda yang menyegarkan.</p>
+                    <span>Rp 10.000</span>
+                    <button class="btn-keranjang" onclick="addToCart('Lalapan Telur Geprek', 10000)">Keranjang</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu" id="menu">
+        <h1 class="heading">Our Menu <span>Drinks Menu</span></h1>
+
+        <div class="box-container">
+            <div class="box">
+                <img src="esteh.png" alt="Es Teh">
+                <div class="content">
+                    <h3>Es Teh</h3>
+                    <p>Minuman segar yang menyegarkan</p>
+                    <span>Rp 5.000</span>
+                    <button class="btn-keranjang" onclick="addToCart('Es Teh', 5000)">Keranjang</button>
+                </div>
+            </div>
+            <div class="box">
+                <img src="milktaro.jpg" alt="Milk Taro">
+                <div class="content">
+                    <h3>Milk Taro</h3>
+                    <p>Minuman unik rasa taro</p>
+                    <span>Rp 5.000</span>
+                    <button class="btn-keranjang" onclick="addToCart('Milk Taro', 5000)">Keranjang</button>
+                </div>
+            </div>
+            <div class="box">
+                <img src="esjeruk.jpeg" alt="Es Jeruk">
+                <div class="content">
+                    <h3>Es Jeruk</h3>
+                    <p>Minuman jeruk segar</p>
+                    <span>Rp 5.000</span>
+                    <button class="btn-keranjang" onclick="addToCart('Es Jeruk', 5000)">Keranjang</button>
+                </div>
+            </div>
+            <div class="box">
+                <img src="eskelapa.png" alt="Es Kelapa">
+                <div class="content">
+                    <h3>Es Kelapa</h3>
+                    <p>Es kelapa segar</p>
+                    <span>Rp 5.000</span>
+                    <button class="btn-keranjang" onclick="addToCart('Es Kelapa', 5000)">Keranjang</button>
+                </div>
+            </div>
+            <div class="box">
+                <img src="jhosua.png" alt="Jhosua">
+                <div class="content">
+                    <h3>Jhosua</h3>
+                    <p>Minuman spesial</p>
+                    <span>Rp 6.000</span>
+                    <button class="btn-keranjang" onclick="addToCart('Jhosua', 6000)">Keranjang</button>
+                </div>
+            </div>
+            <div class="box">
+                <img src="milkmanggo.png" alt="Milk Manggo">
+                <div class="content">
+                    <h3>Milk Manggo</h3>
+                    <p>Minuman manggo segar</p>
+                    <span>Rp 10.000</span>
+                    <button class="btn-keranjang" onclick="addToCart('Milk Manggo', 10000)">Keranjang</button>
+                </div>
+            </div>
+            <div class="box">
+                <img src="sprite.jpeg" alt="Sprite">
+                <div class="content">
+                    <h3>Sprite</h3>
+                    <p>Minuman berkarbonasi</p>
+                    <span>Rp 7.000</span>
+                    <button class="btn-keranjang" onclick="addToCart('Sprite', 7000)">Keranjang</button>
+                </div>
+            </div>
+        </div>
+    </section>
+     
+    
+
+    <script>
+        let cart = [];
+
+        function addToCart(name, price) {
+            // Check if item already in cart
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+
+            updateCart();
+            
+            // Optional: Show small notification
+            alert(`${name} ditambahkan ke keranjang`);
+        }
+
+        function removeFromCart(name) {
+            const itemIndex = cart.findIndex(item => item.name === name);
+            
+            if (itemIndex !== -1) {
+                if (cart[itemIndex].quantity > 1) {
+                    cart[itemIndex].quantity -= 1;
+                } else {
+                    cart.splice(itemIndex, 1);
+                }
+                
+                updateCart();
+            }
+        }
+
+        function updateCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartCountElement = document.getElementById('cart-count');
+            const cartTotalElement = document.getElementById('cart-total');
+
+            // Clear previous items
+            cartItemsContainer.innerHTML = '';
+
+            // Total calculation
+            let total = 0;
+            let totalItems = 0;
+
+            // Populate cart items
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                totalItems += item.quantity;
+
+                const cartItemElement = document.createElement('div');
+                cartItemElement.classList.add('cart-item');
+                cartItemElement.innerHTML = `
+                    <div class="cart-item-details">
+                        ${item.name} x ${item.quantity}
+                        <br>
+                        Rp ${itemTotal.toLocaleString()}
+                    </div>
+                    <div>
+                        <span onclick="removeFromCart('${item.name}')" class="remove-item">
+                            <i class="fas fa-trash"></i>
+                        </span>
+                    </div>
+                `;
+                
+                cartItemsContainer.appendChild(cartItemElement);
+            });
+
+            // Update cart count
+            cartCountElement.textContent = totalItems;
+            
+            // Update total
+            cartTotalElement.textContent = `Total: Rp ${total.toLocaleString()}`;
+        }
+
+        function toggleCart() {
+            const cartDropdown = document.getElementById('cart-dropdown');
+            cartDropdown.classList.toggle('show');
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Keranjang masih kosong');
+                return;
+            }
+
+            // Create WhatsApp message
+            const phoneNumber = "6285230873290";
+            let message = "Pesanan Saya:\n";
+            
+            cart.forEach(item => {
+                message += `- ${item.name} x${item.quantity} (Rp ${(item.price * item.quantity).toLocaleString()})\n`;
+            });
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            message += `\nTotal: Rp ${total.toLocaleString()}`;
+
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+
+            // Clear cart after checkout
+            cart = [];
+            updateCart();
+        }
+
+        // Close dropdown if clicked outside
+        window.addEventListener('click', function(e) {
+            const cartDropdown = document.getElementById('cart-dropdown');
+            const cartIcon = document.querySelector('.cart-icon');
+            
+            if (!cartDropdown.contains(e.target) && !cartIcon.contains(e.target)) {
+                cartDropdown.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>angkringan Maharani</title>
+
+    <!-- SWIPER -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- Font Awesome CDN Link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Custom CSS File Link  -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+    .navbar .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .navbar .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+    
+    .navbar .dropdown-content a {
+        color: var(--main-color);
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-size: 1.5rem;
+    }
+    
+    .navbar .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+    
+    .navbar .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    
+    .navbar .dropbtn {
+        cursor: pointer;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .navbar .dropdown-content {
+            position: static;
+            display: none;
+            background-color: transparent;
+            box-shadow: none;
+        }
+    
+        .navbar .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    
+        .navbar .dropdown-content a {
+            padding: 12px 16px 12px 30px;
+        }
+        .book {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .box {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #25d366;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        textarea.box {
+            resize: vertical;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div id="menu-btn" class="fas fa-bars"></div>
+
+        <a href="#" class="logo">Angkringan Maharani <i class="fas fa-mug-hot"></i></a>
+
+        <nav class="navbar">
+            <a href="#home">HOME</a>
+            <a href="menu2.html">MENU</a>
+            
+          <div class="dropdown">
+                <a href="#menu" class="dropdown">KONTAK</a>
+                <div class="dropdown-content">
+                    <a href="https://wa.me/6285230873290">WhatsApp</a>
+                    <a href="mailto:angkringanmaharani@gmail.com">Gmail</a>
+                    <!--<a href="menu3.html">cemilan</a> -->
+                </div>
+            </div>
+            
+            <!--<div class="dropdown">
+                <a href="#menu" class="dropdown">menu</a>
+                <div class="dropdown-content">
+                    <a href="makanan.html">makanan</a>
+                    <a href="menu2.html">minuman</a>
+                    <a href="menu3.html">cemilan</a>
+                    
+                </div>
+            </div> -->
+           
+            <a href="#book">BOOKING</a>
+        </nav>
+
+        <a href="#" class="btn">Open 07:00-22:00 WIB</a>
+    </header>
+
+    <!-- HOME -->
+    <section class="home" id="home">
+        <div class="row">
+            <div class="content">
+                <h3>Angkringan Rasa Istimewa, Harga Bersahabat</h3>
+                <a href="https://wa.me/085220694419" class="btn">buy one now</a>
+            </div>
+            <div class="image">
+                <img src="angkringan2.jpg" class="main-home-image" alt="">
+            
+        </div>
+
+        <div class="image-slider">
+            <img src="home-img-1.png" alt="">
+            <img src="ayamb.png" alt="">
+            <img src="sausage.png" alt="">
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <h1 class="heading">about us <span>why choose us</span></h1>
+
+        <div class="row">
+            <div class="image">
+                <img src="angkringan.jpg" alt="">
+            </div>
+
+            <div class="content">
+                <h3 class="title">what's make our Angkringan Maharani special!</h3>
+                <p>Angkringan Maharani hadir sebagai tempat sederhana namun penuh kehangatan, menggabungkan cita rasa autentik makanan tradisional dengan suasana kekeluargaan yang erat. Kami menyajikan hidangan khas angkringan seperti ayam bakar, sate-satean, dan aneka minuman yang segar dan nikmat. Dengan harga terjangkau dan suasana yang ramah, kami bertujuan untuk menjadi tempat favorit untuk nongkrong dan berbagi cerita bagi semua kalangan, dari pekerja hingga mahasiswa.</p>
+               <!-- Konten tambahan yang disembunyikan -->
+            <div id="more-content" style="display: none;">
+                <p>Di Angkringan Maharani, kami juga menyediakan berbagai acara spesial dan promosi menarik setiap bulannya. Kami berkomitmen untuk memberikan pengalaman yang tak terlupakan bagi setiap pelanggan yang datang. Bergabunglah dengan kami untuk menikmati momen-momen berharga bersama teman dan keluarga.</p>
+            </div>
+            
+            
+            
+              
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="menu" id="menu">
+        <h1 class="heading">our menu <span>popular menu</span></h1>
+
+        <div class="box-container">
+            <a href="#" class="box">
+                <img src="ayambakar.jpg" alt="">
+                <div class="content">
+                    <h3>Ayam Bakar</h3>
+                    <p>Ayam Bakar dengan cita rasa yang khas bisa membuat perut anda kenyang wkwk.</p>
+                    <span>Rp 13.000</span>
+                </div>
+            </a>
+
+            <a href="#" class="box">
+                <img src="ayamgeprek.png" alt="">
+                <div class="content">
+                    <h3>Ayam Geprek</h3>
+                    <p>Ayam geprek perpaduan cita rasa yang pedas dengan bumbu rahasia yang special bisa membuat lidah anda ketagihan.</p>
+                    <span>Rp 10.000</span>
+                </div>
+            </a>
+
+            <a href="#" class="box">
+                <img src="kentaggoreng.jpg" alt="">
+                <div class="content">
+                    <h3>Kentang Goreng</h3>
+                    <p>Cocok dimakan bersama teman ataupun Keluarga untuk menemani waktu santaimu</p>
+                    <span>Rp 8.000</span>
+                </div>
+            </a>
+
+            <a href="#" class="box">
+                <img src="sosisgoreng.jpg" alt="">
+                <div class="content">
+                    <h3>Sosis Goreng</h3>
+                    <p>Menu yang enak dan harga terjangkau.</p>
+                    <span>Rp 5.000</span>
+                </div>
+            </a>
+
+            <a href="#" class="box">
+                <img src="milktaro.jpg" alt="">
+                <div class="content">
+                    <h3>Milk Taro</h3>
+                    <p>Minuman Rasa unggulan dari taro dan susu asli memberikan sensasi manis yang menggoda.</p>
+                    <span>Rp 5.000</span>
+                </div>
+            </a>
+
+            <a href="#" class="box">
+                <img src="sprite.jpeg" alt="">
+                <div class="content">
+                    <h3>Sprite Ice Lemon</h3>
+                    <p>Segar nya engga ada lawan, dengan sensai kesegaran lemon dan soda yang menyegarkan.</p>
+                    <span>Rp 6.000</span>
+                </div>
+            </a>
+        </div>
+    </section>
+    
+
+    <!-- REVIEW -->
+     <!--
+    <section class="review" id="review">
+        <h1 class="heading">reviews <span>what people says</span></h1>
+
+        <div class="swiper review-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide box">
+                    <i class="fas fa-quote-left"></i>
+                    <i class="fas fa-quote-right"></i>
+                    <img src="puan.jpg" alt="">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>Tempat Nongkrong yang asik untuk melepaskan rasa penat, sangat recomended .</p>
+                    <h3>Puan mahasari</h3>
+                    <span>satisfied client</span>
+                </div>
+
+                <div class="swiper-slide box">
+                    <i class="fas fa-quote-left"></i>
+                    <i class="fas fa-quote-right"></i>
+                    <img src="justin.jpg" alt="">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>Mantapp menu nya, Lanjutkan!!.</p>
+                    <h3>ahmad justin bieber</h3>
+                    <span>satisfied client</span>
+                </div>
+
+                <div class="swiper-slide box">
+                    <i class="fas fa-quote-left"></i>
+                    <i class="fas fa-quote-right"></i>
+                    <img src="pic-3.png" alt="">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius asperiores aliquam hic quis!
+                        Eligendi, aliquam.</p>
+                    <h3>john deo</h3>
+                    <span>satisfied client</span>
+                </div>
+
+                <div class="swiper-slide box">
+                    <i class="fas fa-quote-left"></i>
+                    <i class="fas fa-quote-right"></i>
+                    <img src="pic-4.png" alt="">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi modi perspiciatis distinctio
+                        velit aliquid a.</p>
+                    <h3>john deo</h3>
+                    <span>satisfied client</span>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section> -->
+
+    <!-- BOOK -->
+    <section class="book" id="book">
+        <h1 class="heading">Booking <span>Reserve a Table</span></h1>
+        <form id="bookingForm">
+            <input type="text" placeholder="Name" class="box" id="name" required>
+            <input type="email" placeholder="Email" class="box" id="email" required>
+            <input type="number" placeholder="Number" class="box" id="phone" required>
+            <textarea placeholder="Message" class="box" id="message" cols="30" rows="10" required></textarea>
+            <button onclick="sendWhatsApp()" class="btn">Book Now</button>
+        </form>
+    </section>
+    
+    <!-- FOOTER -->
+    <section class="footer" id="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="#home"><i class="fas fa-arrow-right"></i> home</a>
+                <a href="#about"><i class="fas fa-arrow-right"></i> about</a>
+                <a href="menu2.html"><i class="fas fa-arrow-right"></i> menu</a>
+                <a href="#book"><i class="fas fa-arrow-right"></i> book</a>
+            </div>
+
+            <div class="box">
+                <h3>contact info</h3>
+                <a href="#"><i class="fas fa-phone"></i> +6285230873290</a>
+                <a href="#"><i class="fas fa-envelope"></i> angkringanmaharani@gmail.com</a>
+                <a href="#"><i class="fas fa-envelope"></i> Maharani</a>
+                <a href="https://maps.app.goo.gl/jPvB8q4r6YqfT9he6" target="_blank">
+                    <i class="fas fa-map-marker-alt"></i> Jl. gadingan No. 123, situbondo, jawatimur
+                </a>
+            </div>
+
+            <div class="box">
+                <h3>Social media</h3>
+                <a href="https://www.instagram.com/pdaminfo/"><i class="fab fa-facebook-f"></i> facebook</a>
+                <a href="#"><i class="fab fa-twitter"></i> twitter</a>
+                <a href="https://www.instagram.com/pdaminfo/"><i class="fab fa-instagram"></i> instagram</a>
+                
+            </div>
+        </div>
+
+        <div class="credit">Copyright by <span>Rahman Hidayat</span> | all rights reserved</div>
+    </section>
+    <script>
+        function sendWhatsApp() {
+            try {
+                var name = document.getElementById('name').value;
+                var email = document.getElementById('email').value;
+                var phone = document.getElementById('phone').value;
+                var message = document.getElementById('message').value;
+
+                if (!name || !email || !phone || !message) {
+                    alert('Please fill all fields');
+                    return;
+                }
+
+                var text = "Booking Request:\n\n" +
+                    "Name: " + name + "\n" +
+                    "Email: " + email + "\n" +
+                    "Phone: " + phone + "\n" +
+                    "Message: " + message;
+
+                // Encode the text for URL
+                var encodedText = encodeURIComponent(text);
+
+                // Create WhatsApp URL
+                var whatsappURL = "https://wa.me/6285230873290?text=" + encodedText;
+
+                // Open WhatsApp in new tab
+                window.open(whatsappURL);
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Something went wrong. Please try again.');
+            }
+        }
+    </script>
+
+
+
+
+
+
+
+
+    <!-- SWIPER -->
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+    <!-- Custom JS File Link  -->
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
